@@ -8,7 +8,10 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-    origin: "https://food-reels-livid.vercel.app",
+    origin: app.use(cors({
+    origin: true,
+    credentials: true
+})),
     credentials: true
 }));
 
