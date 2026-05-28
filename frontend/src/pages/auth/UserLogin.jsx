@@ -18,11 +18,11 @@ const UserLogin = () => {
       const response = await axios.post("https://food-reels-150l.onrender.com/api/auth/user/login", {
         email,
         password
-      }, {  });
+      });
 
       console.log(response.data);
       localStorage.removeItem("foodPartner");
-      navigate("/");
+     window.location.href = "/";
 
     } catch (err) {
       // Log the actual error from backend
