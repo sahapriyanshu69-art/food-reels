@@ -24,7 +24,7 @@ const UserLogin = () => {
 
       console.log(response.data);
       localStorage.removeItem("foodPartner");
-     window.location.href = "/";
+     window.location.href = "/app";
 
     } catch (err) {
       console.log('Error response:', err.response?.data);
