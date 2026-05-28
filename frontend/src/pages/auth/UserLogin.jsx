@@ -16,7 +16,7 @@ const UserLogin = () => {
     const password = e.target.password.value;
 
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/user/login", {
+      const response = await axios.post("https://food-reels-150l.onrender.com/api/auth/user/login", {
         email,
         password
       }, { withCredentials: true });

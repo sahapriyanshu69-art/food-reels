@@ -18,7 +18,7 @@ const FoodPartnerRegister = () => {
     const password = e.target.password.value;
     const address = e.target.address.value;
 
-    axios.post("http://localhost:3000/api/auth/foodpartner/register", {
+    axios.post("https://food-reels-150l.onrender.com/api/auth/foodpartner/register", {
       name:businessName,
       contactName,
       phoneNumber,

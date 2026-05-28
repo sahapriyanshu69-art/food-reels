@@ -24,7 +24,7 @@ const Saved = () => {
     async function saveVideo(item) {
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/food/save",
+                "https://food-reels-150l.onrender.com/api/food/save",
                 { foodId: item._id },
                 { withCredentials: true }
             )

@@ -14,7 +14,7 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      "http://localhost:3000/api/auth/foodpartner/login",
+      "https://food-reels-150l.onrender.com/api/auth/foodpartner/login",
       { email, password },
       { withCredentials: true }
     );
