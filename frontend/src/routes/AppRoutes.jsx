@@ -15,13 +15,12 @@ const AppRoutes = () => {
     return (
         <Router>
             <Routes>
+                <Route path="/" element={<UserLogin />} />
                 <Route path="/register" element={<ChooseRegister />} />
                 <Route path="/user/register" element={<UserRegister />} />
                 <Route path="/user/login" element={<UserLogin />} />
                 <Route path="/foodpartner/register" element={<FoodPartnerRegister />} />
                 <Route path="/foodpartner/login" element={<FoodPartnerLogin />} />
-               <Route path="/" element={<UserLogin />} />
-<Route path="/saved" element={<><Saved /><BottomNav /></>} />
                 <Route path="/saved" element={<><Saved /><BottomNav /></>} />
                 <Route path="/create-food" element={<CreateFood />} />
                 <Route path="/food-partner/:id" element={<Profile />} />
@@ -31,4 +30,4 @@ const AppRoutes = () => {
     )
 }
 
-export default AppRoutes
+export default AppRoutes;
