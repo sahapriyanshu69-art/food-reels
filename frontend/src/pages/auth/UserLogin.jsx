@@ -23,6 +23,7 @@ const UserLogin = () => {
       console.log(response.data);
       localStorage.removeItem("foodPartner");
      window.location.href = "/";
+     window.location.href = "/home";
 
     } catch (err) {
       // Log the actual error from backend
