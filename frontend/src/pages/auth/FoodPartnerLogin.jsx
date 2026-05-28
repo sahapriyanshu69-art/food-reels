@@ -24,7 +24,7 @@ const handleSubmit = async (e) => {
       JSON.stringify(response.data.foodPartner)
     );
 
-   window.location.href = "/app";
+   window.location.href = "/partner-profile";
 
   } catch (error) {
     console.log(error.response?.data || error.message);
