@@ -7,7 +7,7 @@ const Home = () => {
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/food")
+        axios.get("https://food-reels-150l.onrender.com/api/food")
             .then(response => {
                 console.log(response.data)
                 setVideos(response.data.foodItems)
@@ -20,7 +20,7 @@ const Home = () => {
   async function likeVideo(item) {
     try {
         const response = await axios.post(
-            "https://food-reels-150l.onrender.com/api/food",
+            "https://food-reels-150l.onrender.com/api/food/like",
             { foodId: item._id }
         )
 
