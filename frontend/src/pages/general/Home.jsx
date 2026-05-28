@@ -20,7 +20,7 @@ const Home = () => {
   async function likeVideo(item) {
     try {
         const response = await axios.post(
-            "http://localhost:3000/api/food/like",
+            "https://food-reels-150l.onrender.com/api/food",
             { foodId: item._id }
         )
 
