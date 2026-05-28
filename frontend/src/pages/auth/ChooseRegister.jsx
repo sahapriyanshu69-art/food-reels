@@ -14,7 +14,7 @@ const ChooseRegister = () => {
           <Link to="/user/register" className="auth-submit" style={{textDecoration:'none'}}>
             Register as normal user
           </Link>
-          <Link to="/food-partner/register" className="auth-submit" style={{textDecoration:'none', background:'var(--color-surface-alt)', color:'var(--color-text)', border:'1px solid var(--color-border)'}}>
+          <Link to="/foodpartner/register" className="auth-submit" style={{textDecoration:'none', background:'var(--color-surface-alt)', color:'var(--color-text)', border:'1px solid var(--color-border)'}}>
             Register as food partner
           </Link>
         </div>
