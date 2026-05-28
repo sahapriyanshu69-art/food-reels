@@ -6,6 +6,11 @@ const BottomNav = () => {
   const foodPartner = JSON.parse(localStorage.getItem("foodPartner"))
   const isFoodPartner = !!foodPartner
 
+  const handleLogout = () => {
+    localStorage.removeItem("foodPartner")
+    window.location.href = "/"
+  }
+
   return (
     <nav className="bottom-nav">
       <div className="bottom-nav__inner">
@@ -37,6 +42,29 @@ const BottomNav = () => {
           >
             <span>Profile</span>
           </NavLink>
+        )}
+
+        {!isFoodPartner ? (
+          <NavLink
+            to="/user/login"
+            className={({ isActive }) =>
+              `bottom-nav__item ${isActive ? 'is-active' : ''}`
+            }
+          >
+            <span>Login</span>
+          </NavLink>
+        ) : (
+          <button
+            onClick={handleLogout}
+            className="bottom-nav__item"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer"
+            }}
+          >
+            <span>Logout</span>
+          </button>
         )}
 
       </div>
