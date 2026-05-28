@@ -7,9 +7,7 @@ const Saved = () => {
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/food/save", {
-            withCredentials: true
-        })
+        axios.get("http://localhost:3000/api/food/save")
         .then(response => {
             setVideos(response.data.saveFoods.map(item => ({
                 ...item.food,
@@ -25,8 +23,7 @@ const Saved = () => {
         try {
             const response = await axios.post(
                 "https://food-reels-150l.onrender.com/api/food/save",
-                { foodId: item._id },
-                { withCredentials: true }
+                { foodId: item._id }
             )
 
             if (!response.data.save) {

@@ -7,7 +7,7 @@ const Home = () => {
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/food", { withCredentials: true })
+        axios.get("http://localhost:3000/api/food")
             .then(response => {
                 console.log(response.data)
                 setVideos(response.data.foodItems)
@@ -21,8 +21,7 @@ const Home = () => {
     try {
         const response = await axios.post(
             "http://localhost:3000/api/food/like",
-            { foodId: item._id },
-            { withCredentials: true }
+            { foodId: item._id }
         )
 
         setVideos(prev =>
@@ -48,8 +47,7 @@ const Home = () => {
     try {
         const response = await axios.post(
             "https://food-reels-150l.onrender.com/api/food/save",
-            { foodId: item._id },
-            { withCredentials: true }
+            { foodId: item._id }
         )
 
         setVideos(prev =>

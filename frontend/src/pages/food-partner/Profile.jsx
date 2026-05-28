@@ -17,9 +17,7 @@ const Profile = () => {
         if (!id) return;
 
         axios
-            .get(`https://food-reels-150l.onrender.com/api/foodpartner/${id}`, {
-                withCredentials: true
-            })
+            .get(`https://food-reels-150l.onrender.com/api/foodpartner/${id}`)
             .then((response) => {
                 console.log(response.data);
                 setProfile(response.data.foodPartner);

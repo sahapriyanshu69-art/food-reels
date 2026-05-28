@@ -18,7 +18,7 @@ const UserLogin = () => {
       const response = await axios.post("https://food-reels-150l.onrender.com/api/auth/user/login", {
         email,
         password
-      }, { withCredentials: true });
+      }, {  });
 
       console.log(response.data);
       localStorage.removeItem("foodPartner");

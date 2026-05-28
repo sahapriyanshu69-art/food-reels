@@ -25,7 +25,7 @@ const FoodPartnerRegister = () => {
       email,
       password,
       address
-    }, { withCredentials: true })
+    })
       .then(response => {
         console.log(response.data);
         navigate("/"); // Redirect to home page after successful registration

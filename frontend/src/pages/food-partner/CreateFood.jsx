@@ -56,9 +56,8 @@ const CreateFood = () => {
         formData.append('description', description);
         formData.append("video", videoFile);
 
-        const response = await axios.post("https://food-reels-150l.onrender.com/api/food", formData, {
-            withCredentials: true,
-        })
+        const response = await axios.post("https://food-reels-150l.onrender.com/api/food", formData,   
+        )
 
         console.log(response.data);
         navigate("/"); // Redirect to home or another page after successful creation
