@@ -4,13 +4,12 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const cookieOptions = {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    path: "/"
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+  path: "/"
 };
-
 async function registerUser(req, res) {
     try {
         const { fullName, email, password } = req.body;
