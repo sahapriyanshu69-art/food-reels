@@ -31,7 +31,11 @@ async function registerUser(req, res) {
         res.status(201).json({
             message: "User registered successfully",
             token,
-            user
+            user: {
+                _id: user._id,
+                fullName: user.fullName,
+                email: user.email
+            }
         });
 
     } catch (error) {
@@ -72,7 +76,11 @@ async function loginUser(req, res) {
         res.status(200).json({
             message: "User logged in successfully",
             token,
-            user
+            user: {
+                _id: user._id,
+                fullName: user.fullName,
+                email: user.email
+            }
         });
 
     } catch (error) {
@@ -122,7 +130,11 @@ async function registerFoodPartner(req, res) {
         res.status(201).json({
             message: "Food partner registered successfully",
             token,
-            foodPartner
+            foodPartner: {
+                _id: foodPartner._id,
+                name: foodPartner.name,
+                email: foodPartner.email
+            }
         });
 
     } catch (error) {
@@ -164,7 +176,11 @@ async function loginFoodPartner(req, res) {
         res.status(200).json({
             message: "Food partner logged in successfully",
             token,
-            foodPartner
+            foodPartner: {
+                _id: foodPartner._id,
+                name: foodPartner.name,
+                email: foodPartner.email
+            }
         });
 
     } catch (error) {
@@ -173,6 +189,7 @@ async function loginFoodPartner(req, res) {
         });
     }
 }
+
 function logoutUser(req, res) {
     res.status(200).json({
         message: "User logged out successfully"
@@ -189,5 +206,7 @@ module.exports = {
     registerUser,
     loginUser,
     registerFoodPartner,
-    loginFoodPartner, logoutUser,logoutFoodPartner
+    loginFoodPartner,
+    logoutUser,
+    logoutFoodPartner
 };
