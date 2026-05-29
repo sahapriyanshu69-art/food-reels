@@ -173,10 +173,21 @@ async function loginFoodPartner(req, res) {
         });
     }
 }
+function logoutUser(req, res) {
+    res.status(200).json({
+        message: "User logged out successfully"
+    });
+}
+
+function logoutFoodPartner(req, res) {
+    res.status(200).json({
+        message: "Food partner logged out successfully"
+    });
+}
 
 module.exports = {
     registerUser,
     loginUser,
     registerFoodPartner,
-    loginFoodPartner
+    loginFoodPartner, logoutUser,logoutFoodPartner
 };

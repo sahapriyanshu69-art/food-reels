@@ -1,6 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const authRoutes = require("./routes/auth.routes.js");
+const authRoutes = require("./routes/auth.routes.js").default;
 const foodRoutes = require('./routes/food.routes.js');
 const foodPartnerRoutes = require('./routes/foodpartner.routes.js');
 const cors = require('cors');
