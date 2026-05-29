@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/profile.css';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-
+import { useParams, useNavigate } from 'react-router-dom';
 const Profile = () => {
     const { id: routeId } = useParams();
-
+        const navigate = useNavigate();
     const partner = JSON.parse(localStorage.getItem("foodPartner"));
 
     const id = routeId || partner?._id;
@@ -61,7 +60,7 @@ const Profile = () => {
 
     <button
   className="upload-btn"
-  onClick={() => window.location.href = "/create-food"}
+  onClick={() => navigate("/create-food")}
 >
   <span className="upload-icon">＋</span>
   Upload New Video
