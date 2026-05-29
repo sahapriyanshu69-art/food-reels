@@ -1,29 +1,14 @@
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const authRoutes = require("./routes/auth.routes.js").default;
-const foodRoutes = require('./routes/food.routes.js');
-const foodPartnerRoutes = require('./routes/foodpartner.routes.js');
-const cors = require('cors');
+const express = require("express");
+const authController = require("../controllers/auth.controller.js");
 
-const app = express();
+const router = express.Router();
 
-/* IMPORTANT */
-app.set("trust proxy", 1);
+router.post("/user/register", authController.registerUser);
+router.post("/user/login", authController.loginUser);
+router.get("/user/logout", authController.logoutUser);
 
-app.use(cors({
-    origin: "https://food-reels-855r.vercel.app",
-    credentials: true
-}));
+router.post("/foodpartner/register", authController.registerFoodPartner);
+router.post("/foodpartner/login", authController.loginFoodPartner);
+router.get("/foodpartner/logout", authController.logoutFoodPartner);
 
-app.use(cookieParser());
-app.use(express.json());
-
-app.get("/", (req, res) => {
-    res.send("hello world");
-});
-
-app.use('/api/auth', authRoutes);
-app.use('/api/food', foodRoutes);
-app.use('/api/foodpartner', foodPartnerRoutes);
-
-module.exports = app;
+module.exports = router;

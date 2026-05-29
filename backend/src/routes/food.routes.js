@@ -16,10 +16,7 @@ router.post(
     foodController.createfood
 );
 
-router.get(
-    "/",
-    foodController.getFoodItems
-);
+router.get("/", foodController.getFoodItems);
 
 router.post(
     "/like",
