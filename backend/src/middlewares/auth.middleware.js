@@ -2,8 +2,16 @@ const foodPartnermodel = require("../models/foodpartner");
 const userModel = require("../models/user.model.js");
 const jwt = require("jsonwebtoken");
 
+function getToken(req) {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) return null;
+
+    return authHeader.split(" ")[1];
+}
+
 async function authUserMiddleware(req, res, next) {
-    const token = req.cookies.token;
+    const token = getToken(req);
 
     if (!token) {
         return res.status(401).json({
@@ -12,7 +20,11 @@ async function authUserMiddleware(req, res, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(
+            token,
+            process.env.JWT_SECRET
+        );
+
         const user = await userModel.findById(decoded.id);
 
         if (!user) {
@@ -23,6 +35,7 @@ async function authUserMiddleware(req, res, next) {
 
         req.user = user;
         next();
+
     } catch (err) {
         return res.status(401).json({
             message: "Invalid token"
@@ -31,7 +44,7 @@ async function authUserMiddleware(req, res, next) {
 }
 
 async function authfoodmiddleware(req, res, next) {
-    const token = req.cookies.token;
+    const token = getToken(req);
 
     if (!token) {
         return res.status(401).json({
@@ -40,8 +53,13 @@ async function authfoodmiddleware(req, res, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const foodPartner = await foodPartnermodel.findById(decoded.id);
+        const decoded = jwt.verify(
+            token,
+            process.env.JWT_SECRET
+        );
+
+        const foodPartner =
+            await foodPartnermodel.findById(decoded.id);
 
         if (!foodPartner) {
             return res.status(401).json({
@@ -51,6 +69,7 @@ async function authfoodmiddleware(req, res, next) {
 
         req.foodPartner = foodPartner;
         next();
+
     } catch (err) {
         return res.status(401).json({
             message: "Invalid token"
@@ -59,7 +78,7 @@ async function authfoodmiddleware(req, res, next) {
 }
 
 async function authAnyMiddleware(req, res, next) {
-    const token = req.cookies.token;
+    const token = getToken(req);
 
     if (!token) {
         return res.status(401).json({
@@ -68,15 +87,21 @@ async function authAnyMiddleware(req, res, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(
+            token,
+            process.env.JWT_SECRET
+        );
 
         const user = await userModel.findById(decoded.id);
+
         if (user) {
             req.user = user;
             return next();
         }
 
-        const foodPartner = await foodPartnermodel.findById(decoded.id);
+        const foodPartner =
+            await foodPartnermodel.findById(decoded.id);
+
         if (foodPartner) {
             req.foodPartner = foodPartner;
             return next();

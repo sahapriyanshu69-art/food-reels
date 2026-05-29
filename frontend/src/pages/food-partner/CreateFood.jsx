@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+    useEffect,
+    useMemo,
+    useRef,
+    useState
+} from 'react';
+
 import axios from 'axios';
 import '../../styles/create-food.css';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +41,9 @@ const CreateFood = () => {
         }
 
         if (!file.type.startsWith('video/')) {
-            setFileError('Please select a valid video file.');
+            setFileError(
+                'Please select a valid video file.'
+            );
             return;
         }
 
@@ -51,29 +59,54 @@ const CreateFood = () => {
         e.preventDefault();
 
         try {
+            const token =
+                localStorage.getItem("token");
+
+            if (!token) {
+                alert("Please login first");
+                return;
+            }
+
             const formData = new FormData();
-            formData.append('name', name);
-            formData.append('description', description);
-            formData.append('video', videoFile);
+
+            formData.append("name", name);
+            formData.append(
+                "description",
+                description
+            );
+            formData.append(
+                "video",
+                videoFile
+            );
 
             const response = await axios.post(
                 "https://food-reels-150l.onrender.com/api/food",
                 formData,
                 {
-                    withCredentials: true,
                     headers: {
-                        "Content-Type": "multipart/form-data"
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type":
+                            "multipart/form-data"
                     }
                 }
             );
 
             console.log(response.data);
 
+            alert("Food uploaded successfully");
+
             navigate("/partner-profile");
 
         } catch (error) {
-            console.log(error.response?.data || error.message);
-            alert(error.response?.data?.message || "Upload failed");
+            console.log(
+                error.response?.data ||
+                error.message
+            );
+
+            alert(
+                error.response?.data?.message ||
+                "Upload failed"
+            );
         }
     };
 
@@ -117,13 +150,19 @@ const CreateFood = () => {
                         type="text"
                         placeholder="Food Name"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) =>
+                            setName(e.target.value)
+                        }
                     />
 
                     <textarea
                         placeholder="Description"
                         value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        onChange={(e) =>
+                            setDescription(
+                                e.target.value
+                            )
+                        }
                     />
 
                     <button
