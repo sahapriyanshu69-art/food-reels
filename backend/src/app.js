@@ -7,6 +7,9 @@ const cors = require('cors');
 
 const app = express();
 
+/* IMPORTANT */
+app.set("trust proxy", 1);
+
 app.use(cors({
     origin: "https://food-reels-855r.vercel.app",
     credentials: true
